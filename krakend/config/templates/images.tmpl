@@ -1,0 +1,89 @@
+{
+    "endpoint": "/images",
+    "method": "POST",
+    "output_encoding": "no-op",
+    "timeout": "360s",
+    "extra_config": {
+      "github.com/devopsfaith/krakend-jose/validator": {
+        "alg": "{{ .JWT_VALIDATOR.alg }}",
+        "issuer": "{{ .JWT_VALIDATOR.issuer }}",
+        "jwk-url": "{{ .JWT_VALIDATOR.jwk_url }}",
+        "roles": [
+          "super-admin", "admin" , "citoyen"
+        ],
+        "roles_key": "{{ .JWT_VALIDATOR.roles_key }}",
+        "roles_key_is_nested" :{{ .JWT_VALIDATOR.roles_key_is_nested }} ,
+        "disable_jwk_security": {{ .JWT_VALIDATOR.disable_jwk_security }}
+      }
+    }      ,
+    "headers_to_pass": [
+        "*"
+    ]
+    ,
+    "backend": [
+    {
+        "url_pattern": "/api/upload.php",
+        "encoding": "no-op",
+        "sd": "{{ .SERVICE_DISCOVERY }}",
+        "method": "POST",
+        "extra_config": {
+            "github.com/devopsfaith/krakend/http": {
+               "return_error_details": "log"
+            }
+         },
+        "host": {{ marshal .IMAGES_SERVICE_HOSTS }}
+    }
+    ]
+},
+{
+    "endpoint": "/images/{image}",
+    "method": "GET",
+    "output_encoding": "no-op",
+    "extra_config": {
+      
+    }      ,
+    "headers_to_pass": [
+        "*"
+    ]
+    ,
+    "backend": [
+    {
+        "url_pattern": "/{image}",
+        "encoding": "no-op",
+        "sd": "{{ .SERVICE_DISCOVERY }}",
+        "method": "GET",
+        "extra_config": {
+            "github.com/devopsfaith/krakend/http": {
+               "return_error_details": "log"
+            }
+         },
+        "host": {{ marshal .IMAGES_SERVICE_HOSTS }}
+    }
+    ]
+},
+{
+    "endpoint": "/delete/{code}/{image}",
+    "method": "GET",
+    "output_encoding": "no-op",
+    "extra_config": {
+      
+    }      ,
+    "headers_to_pass": [
+        "*"
+    ]
+    ,
+    "backend": [
+    {
+        "url_pattern": "/{code}/{image}",
+        "encoding": "no-op",
+        "sd": "{{ .SERVICE_DISCOVERY }}",
+        "method": "GET",
+        "extra_config": {
+            "github.com/devopsfaith/krakend/http": {
+               "return_error_details": "log"
+            }
+         },
+        "host": {{ marshal .IMAGES_SERVICE_HOSTS }}
+    }
+    ]
+}

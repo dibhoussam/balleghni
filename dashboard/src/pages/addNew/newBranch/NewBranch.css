@@ -1,0 +1,95 @@
+.newBranch{
+    flex: 4;
+    
+}
+
+.newBranchTitleContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.newBranchForm{
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 20px;
+    -webkit-box-shadow: 0px 0px 15px -10px #000000; 
+    box-shadow: 0px 0px 15px -10px #000000;
+    
+}
+
+.newBranchItem{
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-right: 20px;
+}
+
+.newBranchItem>label{
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: gray;
+}
+
+.newBranchItem>input{
+    height: 20px;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.newBranchGender>input{
+    margin-top: 15px;
+}
+
+.newBranchGender>label{
+    margin: 10px;
+    font-size: 18px;
+    color: #555;
+}
+
+.newBranchSelect{
+    height: 40px;
+    border-radius: 5px;
+}
+
+.newBranchButton{
+    width: 400px;
+    border: none;
+    background-color: darkblue;
+    color: white;
+    padding: 7px 10px;
+    font-weight: 600;
+    border-radius: 10px;
+    margin-top: 40px;
+    cursor: pointer;
+    
+}
+
+.newBranchUploadImg{
+    height: 400px;
+    width: 400px;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.newBranchUpload{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+}
+
+.newBranchLeft{
+    padding: 20px;
+}
+
+.newBranchRight{
+    padding: 20px;
+} 

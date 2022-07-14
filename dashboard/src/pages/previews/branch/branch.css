@@ -1,0 +1,141 @@
+.branch{
+    flex: 4;
+    padding: 20px;
+}
+
+.branchTitleContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.branchAddButton{
+    width: 80px;
+    border: none;
+    padding: 5px;
+    background-color: teal;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+}
+
+.branchContainer{
+    display: flex;
+}
+
+.branchShow{
+    flex: 1;
+    padding: 20px;
+    -webkit-box-shadow: 0px 0px 15px -10px #000000; 
+    box-shadow: 0px 0px 15px -10px #000000;
+
+}
+
+.userUpdate{
+    flex: 2;
+    padding: 20px;
+    -webkit-box-shadow: 0px 0px 15px -10px #000000; 
+    box-shadow: 0px 0px 15px -10px #000000;
+}
+
+.branchShowTop{
+    display: flex;
+    align-items: center;
+
+}
+
+.branchShowImg{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.branchShowTopTitle{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+
+.branchShowName{
+    font-weight: 600;
+    font-size: large;
+}
+
+.branchShowBottom{
+    margin-top: 20px;
+}
+
+.branchShowTitle{
+    font-size: 14px;
+    font-weight: 600;
+    color: rgb(204, 203, 203);
+}
+
+.branchShowInfo{
+    display: flex;
+    align-items: center;
+    margin: 15px 0px;
+    color: #444;
+}
+
+.branchShowIcon{
+    font-size: 16px !important;
+}
+
+.branchShowInfoTitle{
+    margin-left: 10px;
+}
+
+.userUpdateTitle{
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.userUpdateForm{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.userUpdateItem{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.userUpdateItem>label{
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.userUpdateInput{
+    border: none;
+    width: 250px;
+    border-bottom: 1px solid gray;
+    height: 30px;
+}
+
+.userUpdateRight{
+    display: flex;
+    flex-direction: column;
+}
+ 
+.newBranchButton{
+    border-radius: 5px;
+    height:40px;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    background-color: darkblue;
+    color: white;
+    font-weight: 600;
+    position: absolute;
+    bottom: 20px ;
+}
+
+.newBranchLeft{
+    position: relative;
+}

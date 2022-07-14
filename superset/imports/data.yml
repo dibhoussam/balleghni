@@ -1,0 +1,41 @@
+databases:
+- database_name: MySQL
+  extra: '{"metadata_params":{},"engine_params":{},"schemas_allowed_for_csv_upload":[]}'
+  sqlalchemy_uri: mysql+mysqldb://core_user:core_pass@core_db:3306/ballighni
+  tables:
+  - columns:
+    - column_name: created_at
+      is_dttm: true
+      type: TIMESTAMP
+    - column_name: location_id
+      type: BIGINT(20) UNSIGNED
+    - column_name: authoritie_id
+      type: BIGINT(20) UNSIGNED
+    - column_name: reports_id
+      type: BIGINT(20) UNSIGNED
+    - column_name: global_status
+      type: INTEGER(11)
+    - column_name: daira_id
+      type: INTEGER(11)
+    - column_name: wilaya_id
+      type: INTEGER(11)
+    - column_name: daira_ar_name
+      type: VARCHAR(255)
+    - column_name: commune_ar_name
+      type: VARCHAR(255)
+    - column_name: wilaya_arname
+      type: VARCHAR(255)
+    - column_name: authorities_name
+      type: VARCHAR(255)
+    - column_name: user_id
+      type: VARCHAR(255)
+    - column_name: title
+      type: VARCHAR(255)
+    main_dttm_col: created_at
+    metrics:
+    - expression: COUNT(*)
+      metric_name: count
+      metric_type: count
+      verbose_name: COUNT(*)
+    schema: ballighni
+    table_name: global_view

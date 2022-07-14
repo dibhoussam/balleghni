@@ -1,0 +1,52 @@
+{
+   "version": 2,
+   "extra_config": {
+      "github_com/devopsfaith/krakend-oauth2-clientcredentials": {
+         "endpoint_params": {},
+         "client_id": "{{ .env.KEYCLOAK_CLIENT_ID }}",
+         "client_secret": "{{ .env.KEYCLOAK_CLIENT_SECRET }}",
+         "token_url": "{{ .env.KEYCLOAK_TOKEN_URL }}"
+      },
+      "github_com/devopsfaith/krakend-cors": {
+         "allow_origins": [
+           "*"
+         ],
+         "allow_headers": [
+            "*"
+          ],
+         "allow_methods": [
+            "OPTIONS",
+            "POST",
+            "GET",
+            "PUT",
+            "DELETE"
+          ],
+         "expose_headers": [
+            "Content-Length",
+            "Content-Type",
+            "Content-Range"
+          ],
+         "allow_credentials": false
+      }
+   },
+   "plugin": {
+      "pattern": ".so",
+      "folder": "/opt/krakend/plugins/"
+   },
+   "timeout": "3000ms",
+   "cache_ttl": "300s",
+   "output_encoding": "json",
+   "endpoints": [
+      {{ template "images.tmpl" .env }},
+      {{ template "auth.tmpl" .env }},
+      {{ template "users.tmpl" .env }},
+      {{ template "authorities.tmpl" .env }},
+      {{ template "reports.tmpl" .env }},
+      {{ template "branchs.tmpl" .env }},
+      {{ template "announces.tmpl" .env }},
+      {{ template "incidents.tmpl" .env }},
+      {{ template "wilayas.tmpl" .env }},
+      {{ template "dairas.tmpl" .env }},
+      {{ template "communes.tmpl" .env }}
+   ]
+}

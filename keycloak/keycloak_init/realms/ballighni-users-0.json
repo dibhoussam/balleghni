@@ -1,0 +1,195 @@
+{
+  "realm" : "ballighni",
+  "users" : [ {
+    "id" : "44271fe4-a684-4ff8-a1cc-16ac2118824f",
+    "createdTimestamp" : 1645208790858,
+    "username" : "admin",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : true,
+    "firstName" : "ballighni-admin",
+    "attributes" : {
+      "superadmin" : [ "16" ]
+    },
+    "credentials" : [ {
+      "id" : "94636a7e-bbfc-4d7e-b7fe-95c1aed4c236",
+      "type" : "password",
+      "createdDate" : 1648663199534,
+      "secretData" : "{\"value\":\"tWhIhrclP7rUyoNZil/jmYBoqfDZxMWez2SzFBQ9QL/iJGplAXn2qw9HnSdd1W6hNXMuXYB2qao9ku1mckPzqQ==\",\"salt\":\"raJbtWDM+T9Ejl8hE0AMZQ==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":27500,\"algorithm\":\"pbkdf2-sha256\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "super-admin", "default-roles-ballighni" ],
+    "clientRoles" : {
+      "realm-management" : [ "manage-realm", "view-realm", "view-clients", "manage-users", "manage-authorization", "view-authorization", "view-users" ]
+    },
+    "notBefore" : 0,
+    "groups" : [ ]
+  }, {
+    "id" : "8c30f8ed-5b44-4d46-8fb5-025e87ad4eb2",
+    "createdTimestamp" : 1645209384944,
+    "username" : "authorite-seal-admin",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : true,
+    "firstName" : "SEAL",
+    "lastName" : "Admin",
+    "email" : "seal@ballighni.dz",
+    "attributes" : {
+      "authoritie" : [ "1" ]
+    },
+    "credentials" : [ {
+      "id" : "53ca8daa-efb3-4551-b0dc-77b3306f947b",
+      "type" : "password",
+      "createdDate" : 1645209412630,
+      "secretData" : "{\"value\":\"W18cSf0mZ7V7pqyUfFqDqZ85b8gMP/FXRK52wnrecb2SwkKIkvhJA4SN90n0HkKC4sK5lm9Y+DvpzSCeKzDT8A==\",\"salt\":\"s3V/TW2D/DA3wGg3SZ95mg==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":27500,\"algorithm\":\"pbkdf2-sha256\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-ballighni", "admin" ],
+    "notBefore" : 0,
+    "groups" : [ ]
+  }, {
+    "id" : "d4c2f85e-097f-4538-81b0-570f4329ed71",
+    "createdTimestamp" : 1645209466802,
+    "username" : "authorite-seal-staff",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : true,
+    "firstName" : "SEAL",
+    "lastName" : "Staff",
+    "email" : "seal-staff@ballighni.dz",
+    "attributes" : {
+      "authoritie" : [ "1" ]
+    },
+    "credentials" : [ {
+      "id" : "16403036-9a63-43f8-87d5-5de6777670b9",
+      "type" : "password",
+      "createdDate" : 1645209493983,
+      "secretData" : "{\"value\":\"iNQWqfQ+kbj1iVW0TkOx1FxT5ai2ZuokQO9nQZrrLGtACHrcjp48wX4OoxvdzmgFw01CnqJn1I86twRzH4r48A==\",\"salt\":\"QsJJACtxOCC+LDgp/JQNpA==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":27500,\"algorithm\":\"pbkdf2-sha256\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-ballighni", "staff" ],
+    "notBefore" : 0,
+    "groups" : [ ]
+  }, {
+    "id" : "e4a47a81-b003-4b75-bac0-5f8709cb9909",
+    "createdTimestamp" : 1646063347640,
+    "username" : "citoyen-creator",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : true,
+    "credentials" : [ {
+      "id" : "5e2aadb0-b02c-4aa5-b170-cf4862f65d77",
+      "type" : "password",
+      "createdDate" : 1646063540855,
+      "secretData" : "{\"value\":\"MYIdddmrk+kVYMJc6W6EoPx18o6dNnDph24kCSAlNjoJiD0EESuIYkTHest5BXYs4GhkFmNO9g0p+j6cSRCG+w==\",\"salt\":\"a3zK/esu1gT+r8mv0HZheA==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":27500,\"algorithm\":\"pbkdf2-sha256\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-ballighni" ],
+    "clientRoles" : {
+      "realm-management" : [ "manage-users" ]
+    },
+    "notBefore" : 0,
+    "groups" : [ ]
+  }, {
+    "id" : "17b7c4e5-574c-4194-b9e2-a128a896d484",
+    "createdTimestamp" : 1645209584289,
+    "username" : "default-citoyen",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : true,
+    "firstName" : "default-citoyen",
+    "email" : "default-citoyen@ballighni.dz",
+    "attributes" : {
+      "citoyen" : [ "true" ]
+    },
+    "credentials" : [ {
+      "id" : "8ba0af6a-10a1-43fe-992e-30c9f9a7c390",
+      "type" : "password",
+      "createdDate" : 1645209604931,
+      "secretData" : "{\"value\":\"a5kJ5f4RBPEQc2d/TlCgTtpcnX7YDBY0gMKd4/AybjUgrNsX374wtPkLjch7eUdNk9lBx4hBF1FBpF3bEx4pIQ==\",\"salt\":\"E24zfuCjiJFq8BypNNDVIg==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":27500,\"algorithm\":\"pbkdf2-sha256\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-ballighni", "citoyen" ],
+    "notBefore" : 0,
+    "groups" : [ ]
+  }, {
+    "id" : "2c72fd0c-dcf5-4d33-beb2-7b920bf6525e",
+    "createdTimestamp" : 1640818970992,
+    "username" : "service-account-balighni-api-gateway",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : false,
+    "serviceAccountClientId" : "balighni-api-gateway",
+    "credentials" : [ ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "uma_authorization", "default-roles-ballighni" ],
+    "clientRoles" : {
+      "balighni-api-gateway" : [ "uma_protection" ],
+      "realm-management" : [ "query-users", "query-groups", "manage-users", "manage-realm", "query-realms", "view-realm", "realm-admin", "manage-authorization", "view-users" ],
+      "account" : [ "manage-account" ]
+    },
+    "notBefore" : 0,
+    "groups" : [ ]
+  }, {
+    "id" : "cbf964ce-94a4-4153-89f9-2d9e63b29ef4",
+    "createdTimestamp" : 1645209024669,
+    "username" : "wilaya-16-admin",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : true,
+    "firstName" : "Wilaya",
+    "lastName" : "Alger Admin",
+    "email" : "wilaya-16-admin@ballighni.dz",
+    "attributes" : {
+      "wilaya" : [ "16" ]
+    },
+    "credentials" : [ {
+      "id" : "f912713b-e3c4-48ab-a688-c346dbe30696",
+      "type" : "password",
+      "createdDate" : 1645209045444,
+      "secretData" : "{\"value\":\"aG8NYF2BHpB+Jip8TJ2y/UbZRJFWuQY5h62/qzP6Yo3/D6thvMJzYcCb1EKD9LEKP279yItfBGqYTgNVoklJ+w==\",\"salt\":\"a30Ly22FqFnLf7x84hwqlg==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":27500,\"algorithm\":\"pbkdf2-sha256\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-ballighni", "admin" ],
+    "notBefore" : 0,
+    "groups" : [ ]
+  }, {
+    "id" : "6a31f842-8523-4c82-be93-e7ad7a28a918",
+    "createdTimestamp" : 1645209161371,
+    "username" : "wilaya-16-staff",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : true,
+    "firstName" : "Wilaya",
+    "lastName" : "Alger Staff",
+    "email" : "wilaya-16-staff@ballighni.dz",
+    "attributes" : {
+      "wilaya" : [ "16" ]
+    },
+    "credentials" : [ {
+      "id" : "9fdc4816-6c27-489c-848e-f250e50b2d7c",
+      "type" : "password",
+      "createdDate" : 1645209261442,
+      "secretData" : "{\"value\":\"RrczedUNPjJUvczI2G1g4GvJt3s+YKfW82F+ARvU239e7lZ3UZwoJQC71XJrWZe5OIsReCLoOi7HsEtq3IwGRg==\",\"salt\":\"D59b/cQKhkbAiHRtdIAYWg==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":27500,\"algorithm\":\"pbkdf2-sha256\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-ballighni", "staff" ],
+    "notBefore" : 0,
+    "groups" : [ ]
+  } ]
+}

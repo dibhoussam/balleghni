@@ -1,0 +1,38 @@
+{
+
+
+   "endpoint": "/dairas",
+   "method": "GET",
+   "output_encoding": "json",
+   "querystring_params": [
+      "*"
+   ],
+   "headers_to_pass": {{ marshal .HEADERS_TO_PASS }},
+   "extra_config": {
+      "github.com/devopsfaith/krakend-jose/validator": {
+        "alg": "{{ .JWT_VALIDATOR.alg }}",
+        "issuer": "{{ .JWT_VALIDATOR.issuer }}",
+        "jwk-url": "{{ .JWT_VALIDATOR.jwk_url }}",
+        "roles": [
+          "super-admin", "admin" ,"staff" , "citoyen"
+        ],
+        "roles_key": "{{ .JWT_VALIDATOR.roles_key }}",
+        "roles_key_is_nested" :{{ .JWT_VALIDATOR.roles_key_is_nested }} ,
+        "disable_jwk_security": {{ .JWT_VALIDATOR.disable_jwk_security }}
+      }
+    }      ,
+   "backend": [
+      {
+         "url_pattern": "api/dairas",
+         "method": "GET",
+         "encoding": "json",
+         "sd": "{{ .SERVICE_DISCOVERY }}",
+         "extra_config": {
+            "github.com/devopsfaith/krakend/http": {
+               "return_error_details": "log"
+            }
+         },
+         "host": {{ marshal .AUTHORITIES_SERVICE_HOSTS }}
+      }
+   ]
+}

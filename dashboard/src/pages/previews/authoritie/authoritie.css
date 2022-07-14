@@ -1,0 +1,182 @@
+.authoritie{
+    flex: 4;
+    padding: 20px;
+}
+
+.authoritieTitleContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.authoritieAddButton{
+    width: 80px;
+    border: none;
+    padding: 5px;
+    background-color: teal;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+}
+
+.authoritieContainer{
+    display: flex;
+}
+
+.authoritieShow{
+    flex: 1;
+    padding: 20px;
+    -webkit-box-shadow: 0px 0px 15px -10px #000000; 
+    box-shadow: 0px 0px 15px -10px #000000;
+
+}
+
+.authoritieUpdate{
+    flex: 2;
+    padding: 20px;
+    -webkit-box-shadow: 0px 0px 15px -10px #000000; 
+    box-shadow: 0px 0px 15px -10px #000000;
+}
+
+.authoritieShowTop{
+    display: flex;
+    align-items: center;
+
+}
+
+.authoritieShowImg{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    text-align: center;
+}
+
+.authoritieShowTopTitle{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+
+.authoritieShowName{
+    font-weight: 600;
+    font-size: large;
+}
+
+.authoritieShowBottom{
+    margin-top: 20px;
+}
+
+.authoritieShowTitle{
+    font-size: 14px;
+    font-weight: 600;
+    color: rgb(204, 203, 203);
+}
+
+.authoritieShowInfo{
+    display: flex;
+    align-items: center;
+    margin: 15px 0px;
+    color: #444;
+}
+
+.authoritieShowIcon{
+    font-size: 16px !important;
+}
+
+.authoritieShowInfoTitle{
+    margin-left: 10px;
+}
+
+.authoritieUpdateTitle{
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.updateAuthoritieForm{
+    margin: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 20px;
+    border: 1px solid black;
+    -webkit-box-shadow: 0px 0px 15px -10px #000000; 
+    box-shadow: 0px 0px 15px -10px #000000;
+    
+}
+
+.updateAuthoritieItem{
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-right: 20px;
+}
+
+.updateAuthoritieItem>label{
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: gray;
+}
+
+.updateAuthoritieItem>input{
+    height: 20px;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.updateAuthoritieGender>input{
+    margin-top: 15px;
+}
+
+.updateAuthoritieGender>label{
+    margin: 10px;
+    font-size: 18px;
+    color: #555;
+}
+
+.updateAuthoritieSelect{
+    height: 40px;
+    border-radius: 5px;
+}
+
+.updateAuthoritieButton{
+    width: 400px;
+    border: none;
+    background-color: darkblue;
+    color: white;
+    padding: 7px 10px;
+    font-weight: 600;
+    border-radius: 10px;
+    margin-top: 30px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 30px;
+}
+
+.authoritieUploadImg{
+    height: 400px;
+    width: 400px;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.authoritieUpload{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+}
+
+.updateAuthoritieLeft{
+    padding: 20px;
+    position: relative;
+}
+
+
+

@@ -1,0 +1,89 @@
+{
+    "endpoint": "/refresh",
+    "method": "POST",
+    "output_encoding": "json",
+    "extra_config": {
+        "github.com/devopsfaith/krakend-lua/proxy/backend": {
+              "allow_open_libs": true,
+              "pre": " local r = request.load(); local  b = r:body() ; print(r:body()); local f = b..'&client_id={{ .KEYCLOAK_CLIENT_ID }}&client_secret={{ .KEYCLOAK_CLIENT_SECRET }}' ; print (f); r:body(f) ; print(r:body()) "
+         }
+    },
+    "backend": [
+      {
+        "url_pattern": "{{ .KEYCLOAK_TOKEN_URL }}",
+        "encoding": "json",
+        "sd": "{{ .SERVICE_DISCOVERY }}",
+        "method": "POST",
+        "extra_config": {
+            "github.com/devopsfaith/krakend/http": {
+               "return_error_details": "log"
+            }
+         },
+        "host":  {{ marshal .USERS_SERVICE_HOSTS }}
+      }
+    ]
+   
+  }
+  ,
+{
+    "endpoint": "users/auth",
+    "method": "POST",
+    "output_encoding": "json",
+    "headers_to_pass": {{ marshal .HEADERS_TO_PASS }},
+    "extra_config": {
+        
+    },
+    "backend": [
+      {
+        "url_pattern": "auth/realms/ballighni/protocol/openid-connect/token",
+        "encoding": "json",
+        "sd": "{{ .SERVICE_DISCOVERY }}",
+        "method": "POST",
+        "extra_config": {
+            "github.com/devopsfaith/krakend-lua/proxy/backend": {
+              "allow_open_libs": true,
+              "pre": "local r = request.load(); local  b = r:body() ; local t = '&grant_type=password&client_id={{ .KEYCLOAK_CLIENT_ID }}&client_secret={{ .KEYCLOAK_CLIENT_SECRET }}'; local f = b..t ; r:body(f); r:headers('Content-Length', ''..(r:headers('Content-Length') + #t));"
+            }
+         },
+        "host":  {{ marshal .USERS_SERVICE_HOSTS }}
+      }
+    ]
+  },
+{
+    "endpoint": "users/logout",
+    "method": "POST",
+    "output_encoding": "json",
+    "headers_to_pass": {{ marshal .HEADERS_TO_PASS }},
+    "extra_config": {
+      "github.com/devopsfaith/krakend-jose/validator": {
+        "alg": "{{ .JWT_VALIDATOR.alg }}",
+        "issuer": "{{ .JWT_VALIDATOR.issuer }}",
+        "jwk-url": "{{ .JWT_VALIDATOR.jwk_url }}",
+        "roles": [
+          "super-admin", "admin" ,"staff" , "citoyen"
+        ],
+        "roles_key": "{{ .JWT_VALIDATOR.roles_key }}",
+        "roles_key_is_nested" :{{ .JWT_VALIDATOR.roles_key_is_nested }} ,
+        "disable_jwk_security": {{ .JWT_VALIDATOR.disable_jwk_security }}
+      }
+    }      ,
+    "backend": [
+      {
+        "url_pattern": "auth/realms/ballighni/protocol/openid-connect/logout",
+        "encoding": "json",
+        "sd": "{{ .SERVICE_DISCOVERY }}",
+        "method": "POST",
+        "extra_config": {
+            "github.com/devopsfaith/krakend/http": {
+               "return_error_details": "log"
+            },
+            "github.com/devopsfaith/krakend-lua/proxy/backend": {
+              "allow_open_libs": true,
+              "pre": " local r = request.load(); local  b = r:body() ; local t = '&client_id={{ .KEYCLOAK_CLIENT_ID }}&client_secret={{ .KEYCLOAK_CLIENT_SECRET }}'; local f = b..t ; r:body(f) ; r:headers('Content-Length', ''..(r:headers('Content-Length') + #t)); "
+            }
+         },
+        "host":  {{ marshal .USERS_SERVICE_HOSTS }}
+      }
+    ]   
+    
+  }

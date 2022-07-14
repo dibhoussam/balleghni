@@ -1,0 +1,218 @@
+{
+
+
+   "endpoint": "/authorities",
+   "method": "GET",
+   "output_encoding": "json",
+   "querystring_params": [
+      "*"
+   ],
+   "headers_to_pass": {{ marshal .HEADERS_TO_PASS }},
+   "extra_config": {
+      "github.com/devopsfaith/krakend-jose/validator": {
+        "alg": "{{ .JWT_VALIDATOR.alg }}",
+        "issuer": "{{ .JWT_VALIDATOR.issuer }}",
+        "jwk-url": "{{ .JWT_VALIDATOR.jwk_url }}",
+        "roles": [
+          "super-admin", "admin" ,"staff" , "citoyen"
+        ],
+        "roles_key": "{{ .JWT_VALIDATOR.roles_key }}",
+        "roles_key_is_nested" :{{ .JWT_VALIDATOR.roles_key_is_nested }} ,
+        "disable_jwk_security": {{ .JWT_VALIDATOR.disable_jwk_security }}
+      }
+    }      ,
+   "backend": [
+      {
+         "url_pattern": "api/authorities",
+         "method": "GET",
+         "encoding": "json",
+         "sd": "{{ .SERVICE_DISCOVERY }}",
+         "extra_config": {
+            "github.com/devopsfaith/krakend/http": {
+               "return_error_details": "log"
+            }
+         },
+         "host": {{ marshal .AUTHORITIES_SERVICE_HOSTS }}
+      }
+   ]
+},
+{
+   "endpoint": "/authorities/all",
+   "method": "GET",
+   "output_encoding": "json",
+   "headers_to_pass": {{ marshal .HEADERS_TO_PASS }},
+   "extra_config": {
+      "github.com/devopsfaith/krakend-jose/validator": {
+        "alg": "{{ .JWT_VALIDATOR.alg }}",
+        "issuer": "{{ .JWT_VALIDATOR.issuer }}",
+        "jwk-url": "{{ .JWT_VALIDATOR.jwk_url }}",
+        "roles": [
+          "super-admin", "admin" ,"staff" , "citoyen"
+        ],
+        "roles_key": "{{ .JWT_VALIDATOR.roles_key }}",
+        "roles_key_is_nested" :{{ .JWT_VALIDATOR.roles_key_is_nested }} ,
+        "disable_jwk_security": {{ .JWT_VALIDATOR.disable_jwk_security }}
+      }
+    }      ,
+   "backend": [
+      {
+         "url_pattern": "api/authorities/all",
+         "method": "GET",
+         "encoding": "json",
+         "sd": "{{ .SERVICE_DISCOVERY }}",
+         "host": {{ marshal .AUTHORITIES_SERVICE_HOSTS }},
+         "extra_config": {
+            "github.com/devopsfaith/krakend/http": {
+               "return_error_details": "log"
+            }
+         }
+      }
+   ]
+},
+{
+   "endpoint": "/authorities/{id}",
+   "method": "GET",
+   "output_encoding": "json",
+   "headers_to_pass": {{ marshal .HEADERS_TO_PASS }},
+   "extra_config": {
+      "github.com/devopsfaith/krakend-jose/validator": {
+        "alg": "{{ .JWT_VALIDATOR.alg }}",
+        "issuer": "{{ .JWT_VALIDATOR.issuer }}",
+        "jwk-url": "{{ .JWT_VALIDATOR.jwk_url }}",
+        "roles": [
+          "super-admin", "admin" ,"staff" , "citoyen"
+        ],
+        "roles_key": "{{ .JWT_VALIDATOR.roles_key }}",
+        "roles_key_is_nested" :{{ .JWT_VALIDATOR.roles_key_is_nested }} ,
+        "disable_jwk_security": {{ .JWT_VALIDATOR.disable_jwk_security }}
+      }
+    }      ,
+   "backend": [
+      {
+         "url_pattern": "api/authorities/{id}",
+         "method": "GET",
+         "encoding": "json",
+         "sd": "{{ .SERVICE_DISCOVERY }}",
+         "host": {{ marshal .AUTHORITIES_SERVICE_HOSTS }},
+         "extra_config": {
+            "github.com/devopsfaith/krakend/http": {
+               "return_error_details": "log"
+            }
+         }
+      }
+   ]
+},
+{
+   "endpoint": "/authorities",
+   "method": "POST",
+   "output_encoding": "json",
+   "headers_to_pass": {{ marshal .HEADERS_TO_PASS }},
+   "extra_config": {
+      "github.com/devopsfaith/krakend-cel": [
+         {
+            "check_expr": "has(JWT.wilaya) || has(JWT.superadmin)"
+         }
+      ],
+      "github.com/devopsfaith/krakend-jose/validator": {
+        "alg": "{{ .JWT_VALIDATOR.alg }}",
+        "issuer": "{{ .JWT_VALIDATOR.issuer }}",
+        "jwk-url": "{{ .JWT_VALIDATOR.jwk_url }}",
+        "roles": [
+          "super-admin", "admin"
+        ],
+        "roles_key": "{{ .JWT_VALIDATOR.roles_key }}",
+        "roles_key_is_nested" :{{ .JWT_VALIDATOR.roles_key_is_nested }} ,
+        "disable_jwk_security": {{ .JWT_VALIDATOR.disable_jwk_security }}
+      }
+    }      ,
+   "backend": [
+      {
+         "url_pattern": "api/authorities",
+         "method": "POST",
+         "encoding": "json",
+         "sd": "{{ .SERVICE_DISCOVERY }}",
+         "host": {{ marshal .AUTHORITIES_SERVICE_HOSTS }},
+         "extra_config": {
+            "github.com/devopsfaith/krakend/http": {
+               "return_error_details": "log"
+            }
+         }
+      }
+   ]
+},
+{
+   "endpoint": "/authorities/{id}",
+   "method": "PUT",
+   "output_encoding": "json",
+   "headers_to_pass": {{ marshal .HEADERS_TO_PASS }},
+   "extra_config": {
+      "github.com/devopsfaith/krakend-jose/validator": {
+        "alg": "{{ .JWT_VALIDATOR.alg }}",
+        "issuer": "{{ .JWT_VALIDATOR.issuer }}",
+        "jwk-url": "{{ .JWT_VALIDATOR.jwk_url }}",
+        "roles": [
+          "super-admin", "admin"
+        ],
+        "roles_key": "{{ .JWT_VALIDATOR.roles_key }}",
+        "roles_key_is_nested" :{{ .JWT_VALIDATOR.roles_key_is_nested }} ,
+        "disable_jwk_security": {{ .JWT_VALIDATOR.disable_jwk_security }}
+      },
+      "github.com/devopsfaith/krakend-cel": [
+         {
+            "check_expr": "has(JWT.wilaya) || has(JWT.superadmin)"
+         }
+      ]
+    }      ,
+   "backend":[
+      {
+         "url_pattern": "api/authorities/{id}",
+         "method": "PUT",
+         "encoding": "json",
+         "sd": "{{ .SERVICE_DISCOVERY }}",
+         "host": {{ marshal .AUTHORITIES_SERVICE_HOSTS }},
+         "extra_config": {
+            "github.com/devopsfaith/krakend/http": {
+               "return_error_details": "log"
+            }
+         }
+      }
+   ]
+},
+{
+   "endpoint": "/authorities/{id}",
+   "method": "DELETE",
+   "output_encoding": "json",
+   "headers_to_pass": {{ marshal .HEADERS_TO_PASS }},
+   "extra_config": {
+      "github.com/devopsfaith/krakend-jose/validator": {
+        "alg": "{{ .JWT_VALIDATOR.alg }}",
+        "issuer": "{{ .JWT_VALIDATOR.issuer }}",
+        "jwk-url": "{{ .JWT_VALIDATOR.jwk_url }}",
+        "roles": [
+          "super-admin", "admin"
+        ],
+        "roles_key": "{{ .JWT_VALIDATOR.roles_key }}",
+        "roles_key_is_nested" :{{ .JWT_VALIDATOR.roles_key_is_nested }} ,
+        "disable_jwk_security": {{ .JWT_VALIDATOR.disable_jwk_security }}
+      },
+      "github.com/devopsfaith/krakend-cel": [
+         {
+            "check_expr": "has(JWT.wilaya) || has(JWT.superadmin)"
+         }
+      ]
+    }      ,
+   "backend": [
+      {
+         "url_pattern": "api/authorities/{id}",
+         "method": "DELETE",
+         "encoding": "json",
+         "sd": "{{ .SERVICE_DISCOVERY }}",
+         "host": {{ marshal .AUTHORITIES_SERVICE_HOSTS }},
+         "extra_config": {
+            "github.com/devopsfaith/krakend/http": {
+               "return_error_details": "log"
+            }
+         }
+      }
+   ]
+}

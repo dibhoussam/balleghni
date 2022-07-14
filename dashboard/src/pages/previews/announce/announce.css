@@ -1,0 +1,175 @@
+.announce{
+    flex: 4;
+    padding: 20px;
+}
+
+.announceTitleContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.announceAddButton{
+    width: 80px;
+    border: none;
+    padding: 5px;
+    background-color: teal;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+}
+
+.announceContainer{
+    display: flex;
+}
+
+.announceShow{
+    flex: 1;
+    padding: 20px;
+    -webkit-box-shadow: 0px 0px 15px -10px #000000; 
+    box-shadow: 0px 0px 15px -10px #000000;
+
+}
+
+.announceUpdate{
+    flex: 2;
+    padding: 20px;
+    -webkit-box-shadow: 0px 0px 15px -10px #000000; 
+    box-shadow: 0px 0px 15px -10px #000000;
+}
+
+.announceShowTop{
+    display: flex;
+    align-items: center;
+
+}
+
+.announceShowImg{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.announceShowTopTitle{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+
+.announceShowName{
+    font-weight: 600;
+}
+
+.announceShowBottom{
+    margin-top: 20px;
+}
+
+.announceShowTitle{
+    font-size: 14px;
+    font-weight: 600;
+    color: rgb(204, 203, 203);
+}
+
+.announceShowInfo{
+    display: flex;
+    align-items: center;
+    margin: 15px 0px;
+    color: #444;
+}
+
+.announceShowIcon{
+    font-size: 16px !important;
+}
+
+.announceShowInfoTitle{
+    margin-left: 10px;
+}
+
+.announceUpdateTitle{
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.announceForm{
+    margin: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 20px;
+    border: 1px solid black;
+    -webkit-box-shadow: 0px 0px 15px -10px #000000; 
+    box-shadow: 0px 0px 15px -10px #000000;
+    
+}
+
+.announceItem{
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-right: 20px;
+}
+
+.announceItem>label{
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: gray;
+}
+
+.announceItem>input{
+    height: 20px;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.announceGender>input{
+    margin-top: 15px;
+}
+
+.announceGender>label{
+    margin: 10px;
+    font-size: 18px;
+    color: #555;
+}
+
+.announceSelect{
+    height: 40px;
+    border-radius: 5px;
+}
+
+.announceButton{
+    width: 400px;
+    border: none;
+    background-color: darkblue;
+    color: white;
+    padding: 7px 10px;
+    font-weight: 600;
+    border-radius: 10px;
+    margin-top: 150px;
+    cursor: pointer;
+    
+}
+
+.announceUploadImg{
+    height: 400px;
+    width: 400px;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.announceUpload{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+}
+
+.announceLeft{
+    padding: 20px;
+}

@@ -1,0 +1,814 @@
+{
+  "endpoint":"/users/{id}",
+  "method":"GET",
+  "querystring_params":[
+    "search"
+  ],
+  "headers_to_pass": {{ marshal .HEADERS_TO_PASS }},
+  "extra_config": {
+    "github.com/devopsfaith/krakend-jose/validator": {
+      "alg": "{{ .JWT_VALIDATOR.alg }}",
+      "issuer": "{{ .JWT_VALIDATOR.issuer }}",
+      "jwk-url": "{{ .JWT_VALIDATOR.jwk_url }}",
+      "roles": [
+        "super-admin", "admin" ,"staff"
+      ],
+      "roles_key": "{{ .JWT_VALIDATOR.roles_key }}",
+      "roles_key_is_nested" :{{ .JWT_VALIDATOR.roles_key_is_nested }} ,
+      "disable_jwk_security": {{ .JWT_VALIDATOR.disable_jwk_security }}
+    }
+  }  ,
+  "backend":[
+    {
+      "is_collection":true,
+      "url_pattern":"/auth/admin/realms/ballighni/users/{id}",
+      "method":"GET",
+      "encoding": "json",
+      "sd": "{{ .SERVICE_DISCOVERY }}",
+      "extra_config": {
+        "github.com/devopsfaith/krakend/http": {
+          "return_error_details": "log"
+        },
+        "github.com/devopsfaith/krakend-oauth2-clientcredentials":{
+          "client_id":"{{ .KEYCLOAK_CLIENT_ID }}",
+          "client_secret":"{{ .KEYCLOAK_CLIENT_SECRET }}",
+          "token_url":"{{ .KEYCLOAK_TOKEN_URL }}",
+          "scopes":"openid"
+        }
+      },
+      "host":{{ marshal .USERS_SERVICE_HOSTS }}
+    }
+  ]
+},
+
+
+{
+  "endpoint":"/users/wilaya/{id}",
+  "method":"GET",
+  "querystring_params":[
+    "search"
+  ],
+  "headers_to_pass": {{ marshal .HEADERS_TO_PASS }},
+  "extra_config": {
+    "github.com/devopsfaith/krakend-jose/validator": {
+      "alg": "{{ .JWT_VALIDATOR.alg }}",
+      "issuer": "{{ .JWT_VALIDATOR.issuer }}",
+      "jwk-url": "{{ .JWT_VALIDATOR.jwk_url }}",
+      "roles": [
+        "super-admin", "admin" ,"staff"
+      ],
+      "roles_key": "{{ .JWT_VALIDATOR.roles_key }}",
+      "roles_key_is_nested" :{{ .JWT_VALIDATOR.roles_key_is_nested }} ,
+      "disable_jwk_security": {{ .JWT_VALIDATOR.disable_jwk_security }}
+    }
+  }  ,
+  "backend":[
+    {
+      "is_collection":true,
+      "url_pattern":"/auth/realms/ballighni/userapi-rest/users/search-wilaya-attr?attr=wilaya&value={id}",
+      "method":"GET",
+      "encoding": "json",
+      "sd": "{{ .SERVICE_DISCOVERY }}",
+      "extra_config": {
+        "github.com/devopsfaith/krakend/http": {
+          "return_error_details": "log"
+        },
+        "github.com/devopsfaith/krakend-oauth2-clientcredentials":{
+          "client_id":"{{ .KEYCLOAK_CLIENT_ID }}",
+          "client_secret":"{{ .KEYCLOAK_CLIENT_SECRET }}",
+          "token_url":"{{ .KEYCLOAK_TOKEN_URL }}",
+          "scopes":"openid"
+        }
+      },
+      "host":{{ marshal .USERS_SERVICE_HOSTS }}
+    }
+  ]
+},
+{
+  "endpoint":"/users/authoritie/{id}",
+  "method":"GET",
+  "querystring_params":[
+    "search"
+  ],
+  "headers_to_pass": {{ marshal .HEADERS_TO_PASS }},
+  "extra_config": {
+    "github.com/devopsfaith/krakend-jose/validator": {
+      "alg": "{{ .JWT_VALIDATOR.alg }}",
+      "issuer": "{{ .JWT_VALIDATOR.issuer }}",
+      "jwk-url": "{{ .JWT_VALIDATOR.jwk_url }}",
+      "roles": [
+        "super-admin", "admin" ,"staff"
+      ],
+      "roles_key": "{{ .JWT_VALIDATOR.roles_key }}",
+      "roles_key_is_nested" :{{ .JWT_VALIDATOR.roles_key_is_nested }} ,
+      "disable_jwk_security": {{ .JWT_VALIDATOR.disable_jwk_security }}
+    }
+  }  ,
+  "backend":[
+    {
+      "is_collection":true,
+      "url_pattern":"/auth/realms/ballighni/userapi-rest/users/search-autoritie-attr?attr=authoritie&value={id}",
+      "method":"GET",
+      "encoding": "json",
+      "sd": "{{ .SERVICE_DISCOVERY }}",
+      "extra_config": {
+        "github.com/devopsfaith/krakend/http": {
+          "return_error_details": "log"
+        },
+        "github.com/devopsfaith/krakend-oauth2-clientcredentials":{
+          "client_id":"{{ .KEYCLOAK_CLIENT_ID }}",
+          "client_secret":"{{ .KEYCLOAK_CLIENT_SECRET }}",
+          "token_url":"{{ .KEYCLOAK_TOKEN_URL }}",
+          "scopes":"openid"
+        }
+      },
+      "host":{{ marshal .USERS_SERVICE_HOSTS }}
+    }
+  ]
+}
+
+,{
+  "endpoint":"/users/wilaya",
+  "method":"POST",
+  "querystring_params":[
+    "*"
+  ],
+  "headers_to_pass":[
+    "*"
+  ],
+  "extra_config":{
+    "github.com/devopsfaith/krakend-jsonschema":{
+      "type":"object",
+      "properties":{
+        "firstName":{
+          "type":"string"
+        },
+        "lastName":{
+          "type":"string"
+        },
+        "email":{
+          "type":"string"
+        },
+        "enabled":{
+          "type":"boolean"
+        },
+        "username":{
+          "type":"string"
+        },
+        "attributes":{
+          "type":"object",
+          "properties":{
+            "wilaya":{
+              "type":"integer",
+              "minimum":1,
+              "maximum":58
+            }
+          },
+          "required":[
+            "wilaya"
+          ]
+        },
+        "credentials":{
+          "type":"array"
+        },
+        "realmRoles":{
+          "type":"array",
+          "items":{
+            "type":"string",
+            "enum":[
+                "admin",
+                "staff"
+            ]
+          }
+        },
+        "groups":{
+          "type":"array",
+          "items":{
+            "type":"string",
+            "enum":[
+              "wilaya-admin","wilaya-staff"
+            ]
+          }
+         }
+      },
+      "required":[
+        "username",
+        "attributes",
+        "credentials",
+        "realmRoles",
+        "groups"
+      ]
+    },
+    "github.com/devopsfaith/krakend-jose/validator": {
+      "alg": "{{ .JWT_VALIDATOR.alg }}",
+      "issuer": "{{ .JWT_VALIDATOR.issuer }}",
+      "jwk-url": "{{ .JWT_VALIDATOR.jwk_url }}",
+      "roles":[
+        "super-admin",
+        "admin"
+      ],
+      "roles_key": "{{ .JWT_VALIDATOR.roles_key }}",
+      "roles_key_is_nested" :{{ .JWT_VALIDATOR.roles_key_is_nested }} ,
+      "disable_jwk_security": {{ .JWT_VALIDATOR.disable_jwk_security }},
+      "propagate-claims":[
+        [
+          "wilaya",
+          "X-Wilaya"
+        ],
+        [
+          "superadmin",
+          "X-superadmin"
+        ]
+      ]
+    }
+  }  ,
+  "backend":[
+  {
+    "encoding":"json",
+    "is_collection":true,
+    "url_pattern":"/auth/admin/realms/ballighni/users",
+    "output_encoding": "json",
+    "headers_to_pass": {{ marshal .HEADERS_TO_PASS }},
+    "method":"POST",
+    "extra_config":{
+      "github.com/devopsfaith/krakend-lua/proxy/backend":{
+        "allow_open_libs":true,
+        "pre":" local r = request.load(); local  b = r:body() ;  is_same2 =  not type(r:headers('X-superadmin')) == nil; is_same = string.find(b, r:headers('X-Wilaya'));  if not  (is_same or is_same2)  then    custom_error('Not allowed on this route.', 403); end"
+      },
+      "github.com/devopsfaith/krakend-oauth2-clientcredentials":{
+        "client_id":"{{ .KEYCLOAK_CLIENT_ID }}",
+        "client_secret":"{{ .KEYCLOAK_CLIENT_SECRET }}",
+        "token_url":"{{ .KEYCLOAK_TOKEN_URL }}",
+        "scopes":"openid"
+      },
+      "github.com/devopsfaith/krakend/http":{
+        "return_error_details":"log"
+      }
+    },
+    "host":{{ marshal .USERS_SERVICE_HOSTS }}
+  }
+  ]
+},
+{
+  "endpoint":"/users/citoyen",
+  "method":"POST",
+  "querystring_params":[
+    "*"
+  ],
+  "headers_to_pass":[
+    "*"
+  ],
+  "extra_config":{
+    "github.com/devopsfaith/krakend-jsonschema":{
+      "type":"object",
+      "properties":{
+        "firstName":{
+          "type":"string"
+        },
+        "lastName":{
+          "type":"string"
+        },
+        "email":{
+          "type":"string"
+        },
+        "enabled":{
+          "type":"boolean"
+        },
+        "username":{
+          "type":"string"
+        },
+        "attributes":{
+          "type":"object",
+          "properties":{
+            "citoyen":{
+              "type":"boolean"
+            }
+          },
+          "required":[
+            "citoyen"
+          ]
+        },
+        "credentials":{
+          "type":"array"
+        },
+        "realmRoles":{
+          "type":"array",
+          "items":{
+            "type":"string",
+            "enum":[
+                "citoyen"
+            ]
+          }
+        },
+        "groups":{
+          "type":"array",
+          "items":{
+            "type":"string",
+            "enum":[
+              "citoyen"
+            ]
+          }
+        }
+      },
+      "required":[
+        "username",
+        "attributes",
+        "credentials",
+        "realmRoles",
+        "groups"
+      ]
+    },
+    "github.com/devopsfaith/krakend-jose/validator": {
+      "alg": "{{ .JWT_VALIDATOR.alg }}",
+      "issuer": "{{ .JWT_VALIDATOR.issuer }}",
+      "jwk-url": "{{ .JWT_VALIDATOR.jwk_url }}",
+      "roles":[
+      ],
+      "roles_key": "{{ .JWT_VALIDATOR.roles_key }}",
+      "roles_key_is_nested" :{{ .JWT_VALIDATOR.roles_key_is_nested }} ,
+      "disable_jwk_security": {{ .JWT_VALIDATOR.disable_jwk_security }},
+      "propagate-claims":[
+        [
+          "wilaya",
+          "X-Wilaya"
+        ],
+        [
+          "superadmin",
+          "X-superadmin"
+        ]
+      ]
+    }
+  }  ,
+  "backend":[
+  {
+    "encoding":"json",
+    "is_collection":true,
+    "url_pattern":"/auth/admin/realms/ballighni/users",
+    "output_encoding": "json",
+    "headers_to_pass": {{ marshal .HEADERS_TO_PASS }},
+    "method":"POST",
+    "extra_config":{
+      "github.com/devopsfaith/krakend-oauth2-clientcredentials":{
+        "client_id":"{{ .KEYCLOAK_CLIENT_ID }}",
+        "client_secret":"{{ .KEYCLOAK_CLIENT_SECRET }}",
+        "token_url":"{{ .KEYCLOAK_TOKEN_URL }}",
+        "scopes":"openid",
+        "endpoint_params": {
+                        "client_id": ["{{ .KEYCLOAK_CLIENT_ID }}"],
+                        "client_secret": ["{{ .KEYCLOAK_CLIENT_SECRET }}"]
+                    }
+      },
+      "github.com/devopsfaith/krakend/http":{
+        "return_error_details":"log"
+      }
+    },
+    "host":{{ marshal .USERS_SERVICE_HOSTS }}
+  }
+  ]
+},
+{
+  "endpoint":"/users/wilaya/{id}",
+  "method":"DELETE",
+  "querystring_params":[
+    "*"
+  ],
+  "headers_to_pass":[
+    "*"
+  ],
+  "extra_config":{
+    
+    "github.com/devopsfaith/krakend-jose/validator": {
+      "alg": "{{ .JWT_VALIDATOR.alg }}",
+      "issuer": "{{ .JWT_VALIDATOR.issuer }}",
+      "jwk-url": "{{ .JWT_VALIDATOR.jwk_url }}",
+      "roles":[
+        "super-admin",
+        "admin"
+      ],
+      "roles_key": "{{ .JWT_VALIDATOR.roles_key }}",
+      "roles_key_is_nested" :{{ .JWT_VALIDATOR.roles_key_is_nested }} ,
+      "disable_jwk_security": {{ .JWT_VALIDATOR.disable_jwk_security }},
+      "propagate-claims":[
+        [
+          "wilaya",
+          "X-Wilaya"
+        ],
+        [
+          "superadmin",
+          "X-superadmin"
+        ]
+      ]
+    }
+  }  ,
+  "backend":[
+  {
+    "encoding":"json",
+    "is_collection":true,
+    "url_pattern":"/auth/admin/realms/ballighni/users/{id}",
+    "output_encoding": "json",
+    "headers_to_pass": {{ marshal .HEADERS_TO_PASS }},
+    "method":"DELETE",
+    
+    "extra_config":{
+     
+      "github.com/devopsfaith/krakend-oauth2-clientcredentials":{
+        "client_id":"{{ .KEYCLOAK_CLIENT_ID }}",
+        "client_secret":"{{ .KEYCLOAK_CLIENT_SECRET }}",
+        "token_url":"{{ .KEYCLOAK_TOKEN_URL }}",
+        "scopes":"openid"
+      },
+      "github.com/devopsfaith/krakend/http":{
+        "return_error_details":"log"
+      }
+    },
+    "host":{{ marshal .USERS_SERVICE_HOSTS }}
+  }
+  ]
+},
+{
+  "endpoint":"/users/authoritie/{id}",
+  "method":"DELETE",
+  "querystring_params":[
+    "*"
+  ],
+  "headers_to_pass":[
+    "*"
+  ],
+  "extra_config":{
+    
+    "github.com/devopsfaith/krakend-jose/validator": {
+      "alg": "{{ .JWT_VALIDATOR.alg }}",
+      "issuer": "{{ .JWT_VALIDATOR.issuer }}",
+      "jwk-url": "{{ .JWT_VALIDATOR.jwk_url }}",
+      "roles":[
+        "super-admin",
+        "admin"
+      ],
+      "roles_key": "{{ .JWT_VALIDATOR.roles_key }}",
+      "roles_key_is_nested" :{{ .JWT_VALIDATOR.roles_key_is_nested }} ,
+      "disable_jwk_security": {{ .JWT_VALIDATOR.disable_jwk_security }},
+      "propagate-claims":[
+        [
+          "wilaya",
+          "X-Wilaya"
+        ],
+        [
+          "superadmin",
+          "X-superadmin"
+        ]
+      ]
+    }
+  }  ,
+  
+  "backend":[
+  {
+    "encoding":"json",
+    "is_collection":true,
+    "url_pattern":"/auth/admin/realms/ballighni/users/{id}",
+    "output_encoding": "json",
+    "headers_to_pass": {{ marshal .HEADERS_TO_PASS }},
+    "method":"DELETE",
+    "extra_config":{
+     
+      "github.com/devopsfaith/krakend-oauth2-clientcredentials":{
+        "client_id":"{{ .KEYCLOAK_CLIENT_ID }}",
+        "client_secret":"{{ .KEYCLOAK_CLIENT_SECRET }}",
+        "token_url":"{{ .KEYCLOAK_TOKEN_URL }}",
+        "scopes":"openid"
+      },
+      "github.com/devopsfaith/krakend/http":{
+        "return_error_details":"log"
+      }
+    },
+    "host":{{ marshal .USERS_SERVICE_HOSTS }}
+  }
+  ]
+}
+
+,
+{
+  "endpoint":"/users/authoritie/{id}",
+  "method":"PUT",
+  "querystring_params":[
+    "*"
+  ],
+  "headers_to_pass":[
+    "*"
+  ],
+  "extra_config":{
+    "github.com/devopsfaith/krakend-jsonschema":{
+      "type":"object",
+      "properties":{
+        "firstName":{
+          "type":"string"
+        },
+        "lastName":{
+          "type":"string"
+        },
+        "email":{
+          "type":"string"
+        },
+        "enabled":{
+          "type":"boolean"
+        },
+        "username":{
+          "type":"string"
+        },
+        "attributes":{
+          "type":"object",
+          "properties":{
+            "authoritie":{
+              "type":"integer"
+            }
+          },
+          "required":[
+            "authoritie"
+          ]
+        },
+        "credentials":{
+          "type":"array"
+        },
+        "realmRoles":{
+          "type":"array",
+          "items":{
+            "type":"string",
+            "enum":[
+                "admin",
+                "staff"
+            ]
+          }
+        }
+        
+      }
+    },
+    "github.com/devopsfaith/krakend-jose/validator": {
+      "alg": "{{ .JWT_VALIDATOR.alg }}",
+      "issuer": "{{ .JWT_VALIDATOR.issuer }}",
+      "jwk-url": "{{ .JWT_VALIDATOR.jwk_url }}",
+      "roles":[
+        "super-admin",
+        "admin"
+      ],
+      "roles_key": "{{ .JWT_VALIDATOR.roles_key }}",
+      "roles_key_is_nested" :{{ .JWT_VALIDATOR.roles_key_is_nested }} ,
+      "disable_jwk_security": {{ .JWT_VALIDATOR.disable_jwk_security }},
+      "propagate-claims":[
+        [
+          "authoritie",
+          "X-Wilaya"
+        ],
+        [
+          "superadmin",
+          "X-superadmin"
+        ]
+      ]
+    }
+  }  ,
+  "backend":[
+  {
+    "encoding":"json",
+    "is_collection":true,
+    "url_pattern":"/auth/admin/realms/ballighni/users/{id}",
+    "output_encoding": "json",
+    "headers_to_pass": {{ marshal .HEADERS_TO_PASS }},
+    "method":"PUT",
+    "extra_config":{
+     
+      "github.com/devopsfaith/krakend-oauth2-clientcredentials":{
+        "client_id":"{{ .KEYCLOAK_CLIENT_ID }}",
+        "client_secret":"{{ .KEYCLOAK_CLIENT_SECRET }}",
+        "token_url":"{{ .KEYCLOAK_TOKEN_URL }}",
+        "scopes":"openid"
+      },
+      "github.com/devopsfaith/krakend/http":{
+        "return_error_details":"log"
+      }
+    },
+    "host":{{ marshal .USERS_SERVICE_HOSTS }}
+  }
+  ]
+},
+{
+  "endpoint":"/users/wilaya/{id}",
+  "method":"PUT",
+  "querystring_params":[
+    "*"
+  ],
+  "headers_to_pass":[
+    "*"
+  ],
+  "extra_config":{
+    "github.com/devopsfaith/krakend-jsonschema":{
+      "type":"object",
+      "properties":{
+        "firstName":{
+          "type":"string"
+        },
+        "lastName":{
+          "type":"string"
+        },
+        "email":{
+          "type":"string"
+        },
+        "enabled":{
+          "type":"boolean"
+        },
+        "username":{
+          "type":"string"
+        },
+        "attributes":{
+          "type":"object",
+          "properties":{
+            "authoritie":{
+              "type":"integer"
+            }
+          },
+          "required":[
+            "authoritie"
+          ]
+        },
+        "credentials":{
+          "type":"array"
+        },
+        "realmRoles":{
+          "type":"array",
+          "items":{
+            "type":"string",
+            "enum":[
+                "admin",
+                "staff"
+            ]
+          }
+        }
+        
+      }
+     
+    },
+    "github.com/devopsfaith/krakend-jose/validator": {
+      "alg": "{{ .JWT_VALIDATOR.alg }}",
+      "issuer": "{{ .JWT_VALIDATOR.issuer }}",
+      "jwk-url": "{{ .JWT_VALIDATOR.jwk_url }}",
+      "roles":[
+        "super-admin",
+        "admin"
+      ],
+      "roles_key": "{{ .JWT_VALIDATOR.roles_key }}",
+      "roles_key_is_nested" :{{ .JWT_VALIDATOR.roles_key_is_nested }},
+      "disable_jwk_security": {{ .JWT_VALIDATOR.disable_jwk_security }},
+      "propagate-claims":[
+        [
+          "wilaya",
+          "X-Wilaya"
+        ],
+        [
+          "superadmin",
+          "X-superadmin"
+        ]
+      ]
+    }
+  }  ,
+  "backend":[
+  {
+    "encoding":"json",
+    "is_collection":true,
+    "url_pattern":"/auth/admin/realms/ballighni/users/{id}",
+    "output_encoding": "json",
+    "headers_to_pass": {{ marshal .HEADERS_TO_PASS }},
+    "method":"PUT",
+    "extra_config":{
+      "github.com/devopsfaith/krakend-oauth2-clientcredentials":{
+        "client_id":"{{ .KEYCLOAK_CLIENT_ID }}",
+        "client_secret":"{{ .KEYCLOAK_CLIENT_SECRET }}",
+        "token_url":"{{ .KEYCLOAK_TOKEN_URL }}",
+        "scopes":"openid"
+      },
+      "github.com/devopsfaith/krakend/http":{
+        "return_error_details":"log"
+      }
+    },
+    "host":{{ marshal .USERS_SERVICE_HOSTS }}
+  }
+  ]
+},
+
+
+
+{
+  "endpoint":"/users/authoritie",
+  "method":"POST",
+  "querystring_params":[
+    "*"
+  ],
+  "headers_to_pass":[
+    "*"
+  ],
+  "extra_config":{
+    "github.com/devopsfaith/krakend-jsonschema":{
+      "type":"object",
+      "properties":{
+        "firstName":{
+          "type":"string"
+        },
+        "lastName":{
+          "type":"string"
+        },
+        "email":{
+          "type":"string"
+        },
+        "enabled":{
+          "type":"boolean"
+        },
+        "username":{
+          "type":"string"
+        },
+        "attributes":{
+          "type":"object",
+          "properties":{
+            "authoritie":{
+              "type":"integer",
+              "minimum":1,
+              "maximum":58
+            }
+          },
+          "required":[
+            "authoritie"
+          ]
+        },
+        "credentials":{
+          "type":"array"
+        },
+        "realmRoles":{
+          "type":"array",
+          "items":{
+            "type":"string",
+            "enum":[
+                "admin",
+                "staff"
+            ]
+          }
+        },
+        "groups":{
+          "type":"array",
+          "items":{
+            "type":"string",
+            "enum":[
+              "authoritie-admin","authoritie-staff"
+            ]
+          }
+         }
+      },
+      "required":[
+        "username",
+        "attributes",
+        "credentials",
+        "realmRoles",
+        "groups"
+      ]
+    },
+    "github.com/devopsfaith/krakend-jose/validator": {
+      "alg": "{{ .JWT_VALIDATOR.alg }}",
+      "issuer": "{{ .JWT_VALIDATOR.issuer }}",
+      "jwk-url": "{{ .JWT_VALIDATOR.jwk_url }}",
+      "roles":[
+        "super-admin",
+        "admin"
+      ],
+      "roles_key": "{{ .JWT_VALIDATOR.roles_key }}",
+      "roles_key_is_nested" :{{ .JWT_VALIDATOR.roles_key_is_nested }} ,
+      "disable_jwk_security": {{ .JWT_VALIDATOR.disable_jwk_security }},
+      "propagate-claims":[
+        [
+          "wilaya",
+          "X-Wilaya"
+        ],
+        [
+          "superadmin",
+          "X-superadmin"
+        ]
+      ]
+    }
+  }  ,
+  "backend":[
+  {
+    "encoding":"json",
+    "is_collection":true,
+    "url_pattern":"/auth/admin/realms/ballighni/users",
+    "output_encoding": "json",
+    "headers_to_pass": {{ marshal .HEADERS_TO_PASS }},
+    "method":"POST",
+    "extra_config":{
+      
+      "github.com/devopsfaith/krakend-oauth2-clientcredentials":{
+        "client_id":"{{ .KEYCLOAK_CLIENT_ID }}",
+        "client_secret":"{{ .KEYCLOAK_CLIENT_SECRET }}",
+        "token_url":"{{ .KEYCLOAK_TOKEN_URL }}",
+        "scopes":"openid"
+      },
+      "github.com/devopsfaith/krakend/http":{
+        "return_error_details":"log"
+      }
+    },
+    "host":{{ marshal .USERS_SERVICE_HOSTS }}
+  }
+  ]
+}

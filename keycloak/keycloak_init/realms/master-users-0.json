@@ -1,0 +1,29 @@
+{
+  "realm" : "master",
+  "users" : [ {
+    "id" : "453860aa-3571-4166-8d5e-d63f204140cb",
+    "createdTimestamp" : 1611066130196,
+    "username" : "admin",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : true,
+    "firstName" : "Superadmin",
+    "lastName" : "Superadmin",
+    "email" : "admin@ballighni.dz",
+    "credentials" : [ {
+      "id" : "30c3c22e-7713-4f77-ada3-5ef0e82fee87",
+      "type" : "password",
+      "createdDate" : 1645208530584,
+      "secretData" : "{\"value\":\"lTbgv6g5nQK+OGoUrPw8UKgvWDuxx9Ye8pCEcmSMsJwMXKDh8cl4sjGpl6tEB9bC1XCEnEDEOaTt5IdRwH2+Eg==\",\"salt\":\"yzv9DxJPLzIhyYWU+2cgeg==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":27500,\"algorithm\":\"pbkdf2-sha256\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "offline_access", "uma_authorization", "admin" ],
+    "clientRoles" : {
+      "account" : [ "manage-account", "view-profile" ]
+    },
+    "notBefore" : 0,
+    "groups" : [ ]
+  } ]
+}
